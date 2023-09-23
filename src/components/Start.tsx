@@ -6,32 +6,56 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import Header from './Header';
-import MainFeaturedPost from './MainFeaturedPost';
-import FeaturedPost from './FeaturedPost';
-import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-
-import { post } from './post';
+import Main from './Main';
+import MainFeaturedPost from './MainFeaturedPost';
+import FeaturedPost from './FeaturedPost';
+import { post1 } from './post';
 import axios from 'axios';
 import { useData } from './useData';
 
 const sections = [
-	{ title: 'Test1', url: '#' },
-	{ title: 'Test2', url: '#' },
-	{ title: 'Test3', url: '#' },
-	{ title: 'Test4', url: '#' },
-	{ title: 'Test5', url: '#' },
-	{ title: 'Test6', url: '#' },
-	// { title: "Science", url: "#" },
-	// { title: "Health", url: "#" },
-	// { title: "Style", url: "#" },
-	// { title: "Travel", url: "#" },
+	{ title: 'Technology', url: '#' },
+	{ title: 'Design', url: '#' },
+	{ title: 'Culture', url: '#' },
+	{ title: 'Business', url: '#' },
+	{ title: 'Politics', url: '#' },
+	{ title: 'Opinion', url: '#' },
+	{ title: 'Science', url: '#' },
+	{ title: 'Health', url: '#' },
+	{ title: 'Style', url: '#' },
+	{ title: 'Travel', url: '#' },
 ];
 
-const posts = [post];
+// const mainFeaturedPost = {
+// 	title: 'Title of a longer featured blog post',
+// 	description:
+// 		"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+// 	image: 'https://source.unsplash.com/random?wallpapers',
+// 	imageText: 'main image description',
+// 	linkText: 'Continue reading…',
+// };
+
+// const featuredPosts = [
+// 	{
+// 		title: 'Featured post',
+// 		date: 'Nov 12',
+// 		description:
+// 			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+// 		image: 'https://source.unsplash.com/random?wallpapers',
+// 		imageLabel: 'Image Text',
+// 	},
+// 	{
+// 		title: 'Post title',
+// 		date: 'Nov 11',
+// 		description:
+// 			'This is a wider card with supporting text below as a natural lead-in to additional content.',
+// 		image: 'https://source.unsplash.com/random?wallpapers',
+// 		imageLabel: 'Image Text',
+// 	},
+// ];
 
 const sidebar = {
 	title: 'About',
@@ -56,6 +80,7 @@ const sidebar = {
 		{ name: 'Facebook', icon: FacebookIcon },
 	],
 };
+const posts = [post1];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -65,6 +90,7 @@ export default function Start() {
 		'https://akabab.github.io/starwars-api/api/all.json'
 	);
 
+	// console.log(data?.[0].image);
 	const mainFeaturedPost = {
 		title: data?.[0].name ?? '',
 		description: data?.[0].manufacturer ?? '',
@@ -75,25 +101,25 @@ export default function Start() {
 
 	const featuredPosts = [
 		{
-			title: data?.[10].name ?? '',
-			date: 'Nov 12',
-			description: data?.[10].manufacturer ?? '',
-			image: data?.[10].image ?? '',
-			imageLabel: 'Image Text',
+			title: data?.[1].name ?? '',
+			description: data?.[1].manufacturer ?? '',
+			image: data?.[1].image ?? '',
+			imageText: data?.[1] ?? '',
+			linkText: 'test1',
 		},
 		{
-			title: data?.[11].name ?? '',
-			date: 'Nov 11',
-			description: data?.[11].manufacturer ?? '',
-			image: data?.[11].image ?? '',
-			imageLabel: 'Image Text',
-		},
+			title: data?.[2].name ?? '',
+			description: data?.[2].manufacturer ?? '',
+			image: data?.[2].image ?? '',
+			imageText: data?.[2] ?? '',
+			linkText: 'test2',
+		}
 	];
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
 			<Container maxWidth='lg'>
-				<Header title='Test Start' sections={sections} />
+				<Header title='Home' sections={[]} />
 				<main>
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>
@@ -102,7 +128,7 @@ export default function Start() {
 						))}
 					</Grid>
 					<Grid container spacing={5} sx={{ mt: 3 }}>
-						<Main title='From the firehose' posts={posts} />
+						<Main title='From the firehose' posts={posts}/>
 						<Sidebar
 							title={sidebar.title}
 							description={sidebar.description}
