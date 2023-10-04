@@ -12,7 +12,7 @@ import Footer from './Footer';
 import Main from './Main';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
-import { post1 } from './post';
+import { post } from './post';
 import axios from 'axios';
 import { useData } from './useData';
 
@@ -80,7 +80,7 @@ const sidebar = {
 		{ name: 'Facebook', icon: FacebookIcon },
 	],
 };
-const posts = [post1];
+const posts = [post];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -90,7 +90,7 @@ export default function Start() {
 		'https://akabab.github.io/starwars-api/api/all.json'
 	);
 
-	// console.log(data?.[0].image);
+	console.log(data);
 	const mainFeaturedPost = {
 		title: data?.[0].name ?? '',
 		description: data?.[0].manufacturer ?? '',
@@ -101,18 +101,33 @@ export default function Start() {
 
 	const featuredPosts = [
 		{
-			title: data?.[1].name ?? '',
-			description: data?.[1].manufacturer ?? '',
-			image: data?.[1].image ?? '',
-			imageText: data?.[1] ?? '',
-			linkText: 'test1',
+			title: data?.[18].name ?? '',
+			date: 'Nov 3',
+			description: data?.[18].manufacturer ?? '',
+			image: data?.[18].image ?? '',
+			imageLabel: data?.[18].manufacturer ?? '',
+		},
+		{	
+			title: data?.[3].name ?? '',
+			date: 'Nov 2',
+			description: data?.[3].manufacturer ?? '',
+			image: data?.[3].image ?? '',
+			imageLabel: data?.[3].manufacturer ?? '',
 		},
 		{
-			title: data?.[2].name ?? '',
-			description: data?.[2].manufacturer ?? '',
-			image: data?.[2].image ?? '',
-			imageText: data?.[2] ?? '',
-			linkText: 'test2',
+			title: data?.[4].name ?? '',
+			date: 'Nov 4', 
+			description: data?.[4].manufacturer ?? '',
+			image: data?.[4].image ?? '',
+			imageLabel: data?.[4].manufacturer ??'',
+
+		},
+		{
+			title: data?.[5].name ?? '',
+			date: 'Nov 1',
+			description: data?.[5].manufacturer ?? '',
+			image: data?.[5].image ?? '',
+			imageLabel: data?.[5].manufacturer ?? '',
 		}
 	];
 	return (
@@ -128,7 +143,7 @@ export default function Start() {
 						))}
 					</Grid>
 					<Grid container spacing={5} sx={{ mt: 3 }}>
-						<Main title='From the firehose' posts={posts}/>
+						<Main title='From the firehose' posts={posts} />
 						<Sidebar
 							title={sidebar.title}
 							description={sidebar.description}

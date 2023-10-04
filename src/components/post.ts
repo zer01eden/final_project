@@ -1,4 +1,4 @@
-export const post1 = {
+export const post = {
     date: "test",
     description: "trt test",
     image: "brak",
