@@ -90,7 +90,6 @@ export default function Start() {
 		'https://akabab.github.io/starwars-api/api/all.json'
 	);
 
-	console.log(data);
 	const mainFeaturedPost = {
 		title: data?.[0].name ?? '',
 		description: data?.[0].manufacturer ?? '',
@@ -99,37 +98,48 @@ export default function Start() {
 		linkText: 'Continue reading…',
 	};
 
-	const featuredPosts = [
-		{
-			title: data?.[18].name ?? '',
-			date: 'Nov 3',
-			description: data?.[18].manufacturer ?? '',
-			image: data?.[18].image ?? '',
-			imageLabel: data?.[18].manufacturer ?? '',
-		},
-		{	
-			title: data?.[3].name ?? '',
-			date: 'Nov 2',
-			description: data?.[3].manufacturer ?? '',
-			image: data?.[3].image ?? '',
-			imageLabel: data?.[3].manufacturer ?? '',
-		},
-		{
-			title: data?.[4].name ?? '',
-			date: 'Nov 4', 
-			description: data?.[4].manufacturer ?? '',
-			image: data?.[4].image ?? '',
-			imageLabel: data?.[4].manufacturer ??'',
+	// const featuredPosts = [
+	// 	{
+	// 		title: data?.[18].name ?? '',
+	// 		date: 'Nov 3',
+	// 		description: data?.[18].manufacturer ?? '',
+	// 		image: data?.[18].image ?? '',
+	// 		imageLabel: data?.[18].manufacturer ?? '',
+	// 	},
+	// 	{
+	// 		title: data?.[3].name ?? '',
+	// 		date: 'Nov 2',
+	// 		description: data?.[3].manufacturer ?? '',
+	// 		image: data?.[3].image ?? '',
+	// 		imageLabel: data?.[3].manufacturer ?? '',
+	// 	},
+	// 	{
+	// 		title: data?.[4].name ?? '',
+	// 		date: 'Nov 4',
+	// 		description: data?.[4].manufacturer ?? '',
+	// 		image: data?.[4].image ?? '',
+	// 		imageLabel: data?.[4].manufacturer ?? '',
+	// 	},
+	// 	{
+	// 		title: data?.[5].name ?? '',
+	// 		date: 'Nov 1',
+	// 		description: data?.[5].manufacturer ?? '',
+	// 		image: data?.[5].image ?? '',
+	// 		imageLabel: data?.[5].manufacturer ?? '',
+	// 	},
+	// ];
 
-		},
-		{
-			title: data?.[5].name ?? '',
-			date: 'Nov 1',
-			description: data?.[5].manufacturer ?? '',
-			image: data?.[5].image ?? '',
-			imageLabel: data?.[5].manufacturer ?? '',
-		}
-	];
+	const featuredPosts = data?.slice(2, 18).map((item) => {
+		return {
+			title: item.name ?? '',
+			date: 'test1',
+			description: item.manufacturer ?? '',
+			image: item.image ?? '',
+			imageLabel: item.manufacturer ?? '',
+		};
+	});
+
+	console.log(featuredPosts);
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
@@ -138,9 +148,10 @@ export default function Start() {
 				<main>
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>
-						{featuredPosts.map((post) => (
-							<FeaturedPost key={post.title} post={post} />
-						))}
+						{featuredPosts?.map((post) => {
+							console.log(post);
+							return <FeaturedPost key={post.title} post={post} />;
+						})}
 					</Grid>
 					<Grid container spacing={5} sx={{ mt: 3 }}>
 						<Main title='From the firehose' posts={posts} />
