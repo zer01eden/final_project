@@ -129,10 +129,10 @@ export default function Start() {
 	// 	},
 	// ];
 
-	const featuredPosts = data?.slice(2, 18).map((item) => {
+	const featuredPosts = data?.slice(2, 14).map((item) => {
 		return {
 			title: item.name ?? '',
-			date: 'test1',
+			date: 'test',
 			description: item.manufacturer ?? '',
 			image: item.image ?? '',
 			imageLabel: item.manufacturer ?? '',
@@ -154,7 +154,7 @@ export default function Start() {
 						})}
 					</Grid>
 					<Grid container spacing={5} sx={{ mt: 3 }}>
-						<Main title='From the firehose' posts={posts} />
+						<Main title='TEST' posts={posts} />
 						<Sidebar
 							title={sidebar.title}
 							description={sidebar.description}
@@ -166,7 +166,7 @@ export default function Start() {
 			</Container>
 			<Footer
 				title='Footer'
-				description='Something here to give the footer a purpose!'
+				description='boom boom boom BOOM!'
 			/>
 		</ThemeProvider>
 	);
