@@ -139,7 +139,7 @@ export default function Start() {
 		};
 	});
 
-	console.log(featuredPosts);
+	// console.log(featuredPosts);
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
@@ -149,7 +149,7 @@ export default function Start() {
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>
 						{featuredPosts?.map((post) => {
-							console.log(post);
+							// console.log(post);
 							return <FeaturedPost key={post.title} post={post} />;
 						})}
 					</Grid>
@@ -164,10 +164,7 @@ export default function Start() {
 					</Grid>
 				</main>
 			</Container>
-			<Footer
-				title='Footer'
-				description='boom boom boom BOOM!'
-			/>
+			<Footer title='Footer' description='boom boom boom BOOM!' />
 		</ThemeProvider>
 	);
 }

@@ -2,8 +2,8 @@ import * as React from "react";
 import axios from "axios";
 
 type Data = {
+	id: string;
 	name: string;
-	id?: string;
 	manufacturer: string;
 	image: string;
 };

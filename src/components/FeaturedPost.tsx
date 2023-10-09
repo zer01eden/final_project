@@ -9,18 +9,18 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 interface FeaturedPostProps {
 	post: {
+		id: string;
 		date: string;
 		description: string;
 		image: string;
 		imageLabel: string;
 		title: string;
-		id?: string;
 	};
 }
 
 export default function FeaturedPost(props: FeaturedPostProps) {
 	const { post } = props;
-
+console.log(post.id);
 	return (
 		<Grid item xs={12} md={6}>
 			<LinkRouter to={`/${post.id}`}>
