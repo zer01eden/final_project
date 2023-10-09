@@ -9,7 +9,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 interface FeaturedPostProps {
 	post: {
-		id: string;
+		id?: string;
 		date: string;
 		description: string;
 		image: string;
