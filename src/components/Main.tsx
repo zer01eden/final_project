@@ -10,6 +10,7 @@ interface MainProps {
 		image: string;
 		imageLabel: string;
 		title: string;
+		id?: string;
 	}[];
 	title: string;
 }

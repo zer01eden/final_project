@@ -3,7 +3,7 @@ import axios from "axios";
 
 type Data = {
 	name: string;
-	id: string;
+	id?: string;
 	manufacturer: string;
 	image: string;
 };

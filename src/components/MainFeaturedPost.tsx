@@ -12,6 +12,7 @@ interface MainFeaturedPostProps {
 		imageText: string;
 		linkText: string;
 		title: string;
+		id?: string;
 	};
 }
 
