@@ -14,6 +14,7 @@ interface FeaturedPostProps {
 		image: string;
 		imageLabel: string;
 		title: string;
+		id?: string;
 	};
 }
 
@@ -22,7 +23,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
 
 	return (
 		<Grid item xs={12} md={6}>
-			<LinkRouter to={'/${id}'}>
+			<LinkRouter to={`/${post.id}`}>
 				<CardActionArea>
 					<Card sx={{ display: 'flex' }}>
 						<CardContent sx={{ flex: 1 }}>
