@@ -20,10 +20,10 @@ interface FeaturedPostProps {
 
 export default function FeaturedPost(props: FeaturedPostProps) {
 	const { post } = props;
-console.log(post.id);
+	console.log(post.id);
 	return (
 		<Grid item xs={12} md={6}>
-			<LinkRouter to={`/${post.id}`}>
+			<LinkRouter to={`/${post?.id}`}>
 				<CardActionArea>
 					<Card sx={{ display: 'flex' }}>
 						<CardContent sx={{ flex: 1 }}>
