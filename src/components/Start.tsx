@@ -131,6 +131,7 @@ export default function Start() {
 
 	const featuredPosts = data?.slice(2, 14).map((item) => {
 		return {
+			id: item.id ?? '',
 			title: item.name ?? '',
 			date: 'test',
 			description: item.manufacturer ?? '',
