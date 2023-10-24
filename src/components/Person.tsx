@@ -5,7 +5,14 @@ export default function Person() {
 	const { id } = useParams();
 	console.log(id);
 
-	const [data, setData] = useState({ name: '' });
+	const [data, setData] = useState({
+		name: '',
+		height: '',
+		gender: '',
+		affiliations: [],
+		apprentices: [],
+		image: '',
+	});
 	console.log(data);
 	useEffect(() => {
 		fetch(
@@ -15,5 +22,14 @@ export default function Person() {
 			.then((data) => setData(data))
 			.catch((error) => console.log(error));
 	}, []);
-	return <div>{data?.name}</div>;
+	return (
+		<div>
+			<h2>{data.name}</h2>
+			<img src={data.image}></img>
+			<p>height: {data.height}</p>
+			<p>gender: {data.gender}</p>
+			<p>affiliations: {data.affiliations}</p>
+			<p>apprentices: {data.apprentices}</p>
+		</div>
+	);
 }
