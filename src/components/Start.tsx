@@ -13,7 +13,6 @@ import Main from './Main';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import { post } from './post';
-import axios from 'axios';
 import { useData } from './useData';
 
 const sections = [
@@ -26,36 +25,8 @@ const sections = [
 	{ title: 'Science', url: '#' },
 	{ title: 'Health', url: '#' },
 	{ title: 'Style', url: '#' },
-	{ title: 'Travel', url: '#' },
+	{ title: 'About', url: '/About' },
 ];
-
-// const mainFeaturedPost = {
-// 	title: 'Title of a longer featured blog post',
-// 	description:
-// 		"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-// 	image: 'https://source.unsplash.com/random?wallpapers',
-// 	imageText: 'main image description',
-// 	linkText: 'Continue reading…',
-// };
-
-// const featuredPosts = [
-// 	{
-// 		title: 'Featured post',
-// 		date: 'Nov 12',
-// 		description:
-// 			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-// 		image: 'https://source.unsplash.com/random?wallpapers',
-// 		imageLabel: 'Image Text',
-// 	},
-// 	{
-// 		title: 'Post title',
-// 		date: 'Nov 11',
-// 		description:
-// 			'This is a wider card with supporting text below as a natural lead-in to additional content.',
-// 		image: 'https://source.unsplash.com/random?wallpapers',
-// 		imageLabel: 'Image Text',
-// 	},
-// ];
 
 const sidebar = {
 	title: 'About',
@@ -86,7 +57,7 @@ const posts = [post];
 const defaultTheme = createTheme();
 
 export default function Start() {
-	const [{ data, isLoading, isError }, doFetch] = useData(
+	const [{ data }] = useData(
 		'https://akabab.github.io/starwars-api/api/all.json'
 	);
 
@@ -98,37 +69,6 @@ export default function Start() {
 		linkText: 'Continue reading…',
 	};
 
-	// const featuredPosts = [
-	// 	{
-	// 		title: data?.[18].name ?? '',
-	// 		date: 'Nov 3',
-	// 		description: data?.[18].manufacturer ?? '',
-	// 		image: data?.[18].image ?? '',
-	// 		imageLabel: data?.[18].manufacturer ?? '',
-	// 	},
-	// 	{
-	// 		title: data?.[3].name ?? '',
-	// 		date: 'Nov 2',
-	// 		description: data?.[3].manufacturer ?? '',
-	// 		image: data?.[3].image ?? '',
-	// 		imageLabel: data?.[3].manufacturer ?? '',
-	// 	},
-	// 	{
-	// 		title: data?.[4].name ?? '',
-	// 		date: 'Nov 4',
-	// 		description: data?.[4].manufacturer ?? '',
-	// 		image: data?.[4].image ?? '',
-	// 		imageLabel: data?.[4].manufacturer ?? '',
-	// 	},
-	// 	{
-	// 		title: data?.[5].name ?? '',
-	// 		date: 'Nov 1',
-	// 		description: data?.[5].manufacturer ?? '',
-	// 		image: data?.[5].image ?? '',
-	// 		imageLabel: data?.[5].manufacturer ?? '',
-	// 	},
-	// ];
-
 	const featuredPosts = data?.slice(2, 14).map((item) => {
 		return {
 			id: item.id ?? '',
@@ -139,13 +79,12 @@ export default function Start() {
 			imageLabel: item.manufacturer ?? '',
 		};
 	});
-
 	// console.log(featuredPosts);
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
 			<Container maxWidth='lg'>
-				<Header title='Home' sections={[]} />
+				<Header title='Home' sections={sections} />
 				<main>
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>

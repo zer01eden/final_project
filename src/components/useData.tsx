@@ -1,11 +1,12 @@
-import * as React from "react";
-import axios from "axios";
+import * as React from 'react';
+import axios from 'axios';
 
 type Data = {
-	id?: string;
+	id: string;
 	name: string;
 	manufacturer: string;
 	image: string;
+	height: string;
 };
 
 export const useData = (initialUrl: string, initialData?: unknown) => {
