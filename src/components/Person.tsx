@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import Back from './Back';
+
 
 export default function Person() {
 	const { id } = useParams();
 	console.log(id);
 
+	const navigate = useNavigate();
+	
 	const [data, setData] = useState({
 		name: '',
 		height: '',
 		gender: '',
-		affiliations: [],
-		apprentices: [],
+		affiliations: '',
+		apprentices: '',
 		image: '',
 	});
 	console.log(data);
@@ -30,6 +34,7 @@ export default function Person() {
 			<p>gender: {data.gender}</p>
 			<p>affiliations: {data.affiliations}</p>
 			<p>apprentices: {data.apprentices}</p>
+			<Back/>
 		</div>
 	);
 }
