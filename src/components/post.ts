@@ -1,7 +1,8 @@
-export const post ={
-    date: "test",
-    description: "trt test",
-    image: "brak",
-    imageLabel: "string",
-    title: "test"
+export const post = {
+	id: '1',
+	date: 'test',
+	description: 'trt test',
+	image: 'brak',
+	imageLabel: 'string',
+	title: 'test',
 };

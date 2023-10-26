@@ -6,32 +6,27 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import Header from './Header';
-import MainFeaturedPost from './MainFeaturedPost';
-import FeaturedPost from './FeaturedPost';
-import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-
+import Main from './Main';
+import MainFeaturedPost from './MainFeaturedPost';
+import FeaturedPost from './FeaturedPost';
 import { post } from './post';
-import axios from 'axios';
 import { useData } from './useData';
 
 const sections = [
-	{ title: 'Test1', url: '#' },
-	{ title: 'Test2', url: '#' },
-	{ title: 'Test3', url: '#' },
-	{ title: 'Test4', url: '#' },
-	{ title: 'Test5', url: '#' },
-	{ title: 'Test6', url: '#' },
-	// { title: "Science", url: "#" },
-	// { title: "Health", url: "#" },
-	// { title: "Style", url: "#" },
-	// { title: "Travel", url: "#" },
+	{ title: 'Technology', url: '#' },
+	{ title: 'Design', url: '#' },
+	{ title: 'Culture', url: '#' },
+	{ title: 'Business', url: '#' },
+	{ title: 'Politics', url: '#' },
+	{ title: 'Opinion', url: '#' },
+	{ title: 'Science', url: '#' },
+	{ title: 'Health', url: '#' },
+	{ title: 'Style', url: '#' },
+	{ title: 'About', url: '/About' },
 ];
-
-const posts = [post];
 
 const sidebar = {
 	title: 'About',
@@ -56,12 +51,13 @@ const sidebar = {
 		{ name: 'Facebook', icon: FacebookIcon },
 	],
 };
+const posts = [post];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Start() {
-	const [{ data, isLoading, isError }, doFetch] = useData(
+	const [{ data }] = useData(
 		'https://akabab.github.io/starwars-api/api/all.json'
 	);
 
@@ -73,36 +69,32 @@ export default function Start() {
 		linkText: 'Continue reading…',
 	};
 
-	const featuredPosts = [
-		{
-			title: data?.[10].name ?? '',
-			date: 'Nov 12',
-			description: data?.[10].manufacturer ?? '',
-			image: data?.[10].image ?? '',
-			imageLabel: 'Image Text',
-		},
-		{
-			title: data?.[11].name ?? '',
-			date: 'Nov 11',
-			description: data?.[11].manufacturer ?? '',
-			image: data?.[11].image ?? '',
-			imageLabel: 'Image Text',
-		},
-	];
+	const featuredPosts = data?.slice(2, 14).map((item) => {
+		return {
+			id: item.id ?? '',
+			title: item.name ?? '',
+			date: 'test',
+			description: item.manufacturer ?? '',
+			image: item.image ?? '',
+			imageLabel: item.manufacturer ?? '',
+		};
+	});
+	// console.log(featuredPosts);
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
 			<Container maxWidth='lg'>
-				<Header title='Test Start' sections={sections} />
+				<Header title='Home' sections={sections} />
 				<main>
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>
-						{featuredPosts.map((post) => (
-							<FeaturedPost key={post.title} post={post} />
-						))}
+						{featuredPosts?.map((post) => {
+							// console.log(post);
+							return <FeaturedPost key={post.title} post={post} />;
+						})}
 					</Grid>
 					<Grid container spacing={5} sx={{ mt: 3 }}>
-						<Main title='From the firehose' posts={posts} />
+						<Main title='TEST' posts={posts} />
 						<Sidebar
 							title={sidebar.title}
 							description={sidebar.description}
@@ -112,10 +104,7 @@ export default function Start() {
 					</Grid>
 				</main>
 			</Container>
-			<Footer
-				title='Footer'
-				description='Something here to give the footer a purpose!'
-			/>
+			<Footer title='Footer' description='boom boom boom BOOM!' />
 		</ThemeProvider>
 	);
 }
