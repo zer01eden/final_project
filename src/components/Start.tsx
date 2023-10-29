@@ -15,18 +15,7 @@ import FeaturedPost from './FeaturedPost';
 import { post } from './post';
 import { useData } from './useData';
 
-const sections = [
-	{ title: 'Technology', url: '#' },
-	{ title: 'Design', url: '#' },
-	{ title: 'Culture', url: '#' },
-	{ title: 'Business', url: '#' },
-	{ title: 'Politics', url: '#' },
-	{ title: 'Opinion', url: '#' },
-	{ title: 'Science', url: '#' },
-	{ title: 'Health', url: '#' },
-	{ title: 'Style', url: '#' },
-	{ title: 'About', url: '/About' },
-];
+const sections = [{ title: '', url: '' }];
 
 const sidebar = {
 	title: 'About',
@@ -104,7 +93,10 @@ export default function Start() {
 					</Grid>
 				</main>
 			</Container>
-			<Footer title='Footer' description='boom boom boom BOOM!' />
+			<Footer
+				title='star wars'
+				description='page about characters from the movie'
+			/>
 		</ThemeProvider>
 	);
 }
