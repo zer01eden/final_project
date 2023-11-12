@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import FunCount from './FunCount';
 
 interface HeaderProps {
 	sections: ReadonlyArray<{
@@ -17,8 +18,7 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
 	const sections = [
 		{ title: 'Start', url: '/' },
-		{ title: 'Manufacturers', url: '/Manufacturers' },
-		{ title: 'Gender', url: '/' },
+		{ title: 'Fabrics', url: '/Fabric' },
 		{ title: 'About', url: '/About' },
 	];
 
@@ -28,6 +28,7 @@ export default function Header(props: HeaderProps) {
 		<React.Fragment>
 			<Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
 				<Button size='small'>Subscribe</Button>
+				<FunCount />
 				<Typography
 					component='h2'
 					variant='h5'

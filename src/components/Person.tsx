@@ -8,8 +8,8 @@ export default function Person() {
 	const { id } = useParams();
 	console.log(id);
 
-	const sections = [{ title: '', url: '' }];
-	
+	// const sections = [{ title: '', url: '' }];
+
 	const [data, setData] = useState({
 		name: '',
 		height: '',
@@ -29,15 +29,19 @@ export default function Person() {
 	}, []);
 	return (
 		<div>
-			<Header title='Home' sections={sections} />
+			{/* <Header title='Home' sections={sections} /> */}
+			<Header sections={[]} title={''} />
 			<h2>{data.name}</h2>
 			<img src={data.image}></img>
 			<p>height: {data.height}</p>
 			<p>gender: {data.gender}</p>
-			<p>affiliations: {data.affiliations}</p>
+			<p>affiliations2: {data.affiliations}</p>
 			<p>apprentices: {data.apprentices}</p>
-			<Back/>
-			<Footer title='star wars' description='page about characters from the movie' />
+			<Back />
+			<Footer
+				title='star wars'
+				description='page about characters from the movie'
+			/>
 		</div>
 	);
 }

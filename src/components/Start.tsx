@@ -16,6 +16,7 @@ import { post } from './post';
 import { useData } from './useData';
 
 const sections = [{ title: '', url: '' }];
+console.log(sections);
 
 const sidebar = {
 	title: 'About',
@@ -73,7 +74,8 @@ export default function Start() {
 		<ThemeProvider theme={defaultTheme}>
 			<CssBaseline />
 			<Container maxWidth='lg'>
-				<Header title='Home' sections={sections} />
+				{/* <Header title='Home' sections={sections} /> */}
+				<Header sections={[]} title={''} />
 				<main>
 					<MainFeaturedPost post={mainFeaturedPost} />
 					<Grid container spacing={4}>
