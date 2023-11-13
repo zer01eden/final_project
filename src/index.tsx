@@ -11,6 +11,7 @@ import {
 import ErrorPage from './components/error-page';
 import Person from './components/Person';
 import About from './components/About';
+import Fabric from './components/Fabric';
 
 const router = createBrowserRouter([
 	{
@@ -24,8 +25,13 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: '/about',
+		path: '/About',
 		element: <About />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: '/Fabric',
+		element: <Fabric />,
 		errorElement: <ErrorPage />,
 	},
 ]);
@@ -36,7 +42,7 @@ const root = ReactDOM.createRoot(
 root.render(
 	<React.StrictMode>
 		{/* <BrowserRouter> */}
-			<RouterProvider router={router} />
+		<RouterProvider router={router} />
 		{/* </BrowserRouter> */}
 	</React.StrictMode>
 );

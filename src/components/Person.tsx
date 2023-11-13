@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Back from './Back';
-
+import Footer from './Footer';
+import Header from './Header';
 
 export default function Person() {
 	const { id } = useParams();
 	console.log(id);
 
-	const navigate = useNavigate();
-	
+	// const sections = [{ title: '', url: '' }];
+
 	const [data, setData] = useState({
 		name: '',
 		height: '',
@@ -28,13 +29,19 @@ export default function Person() {
 	}, []);
 	return (
 		<div>
+			{/* <Header title='Home' sections={sections} /> */}
+			<Header sections={[]} title={''} />
 			<h2>{data.name}</h2>
 			<img src={data.image}></img>
 			<p>height: {data.height}</p>
 			<p>gender: {data.gender}</p>
-			<p>affiliations: {data.affiliations}</p>
+			<p>affiliations2: {data.affiliations}</p>
 			<p>apprentices: {data.apprentices}</p>
-			<Back/>
+			<Back />
+			<Footer
+				title='star wars'
+				description='page about characters from the movie'
+			/>
 		</div>
 	);
 }
